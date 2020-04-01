@@ -3,15 +3,20 @@ function pigLatin(str) {
   var vowelsArr = ['a', 'e', 'i', 'o', 'u']
   var splitStr = str.split(' ')
   var final = []
+
   splitStr.forEach(function (word) {
     if (vowelsArr.includes(word[0])) {
-      final.push(word + 'ay')
+      final.push(word + 'way')
+    } else if (!vowelsArr.includes(word[0]) && word[1] === 'q' && word[2] === 'u') {
+      final.push(word.slice(3, word.length) + word[0] + 'qu' + 'ay')
+    } else if (!vowelsArr.includes(word[0])) {
+      final.push(word.slice(1, word.length) + word[0] + 'ay')
+
     } else {
       final.push(word)
     }
   });
-  // console.log(splitStr[0], splitStr[0][0]);
-  return final.join(' ')
+  return final.join(' ');
 }
 
 //front end
